@@ -62,7 +62,6 @@ if (!is.null(x = group.by)) {
 
   data[,group.by] <- factor(data[,group.by] , levels = levels(idents))
   data1 <- melt(data)
-  head(data1)
 
 if(is.null(split.by)){
   plot <- ggplot(data1, aes_string(x='value',
