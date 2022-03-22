@@ -19,7 +19,7 @@ ridge_plot_one_ident <- function(object, features,
     print(paste('Feature(s)', features[!(features %in% rownames(object))], 'not present in the object'))
     features <- features[features %in% rownames(object)]
   }
-  if (length(idents) > 1)){
+  if (length(idents) > 1){
     stop('ONLY ONE IDENT WITH THIS FUNCTION')
   }
 if (!is.null(x = group.by)) {
@@ -30,7 +30,6 @@ if (!is.null(x = group.by)) {
     stop('IDENT NOT PRESENT IN THE GROUP.BY')
   }
   
-  #hello
   
 }
 
