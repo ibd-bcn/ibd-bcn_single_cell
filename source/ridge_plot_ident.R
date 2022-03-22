@@ -34,7 +34,7 @@ if (!is.null(x = group.by)) {
 }
 
 #
-# select cells
+# select cells!
 #
 if (is.null(x = idents)) {
   cells <- colnames(x = object)
