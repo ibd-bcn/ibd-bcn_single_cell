@@ -30,6 +30,8 @@ if (!is.null(x = group.by)) {
     stop('IDENT NOT PRESENT IN THE GROUP.BY')
   }
   
+  #hello
+  
 }
 
 #
