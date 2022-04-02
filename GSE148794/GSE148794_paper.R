@@ -9,33 +9,40 @@ library(Seurat)
 library(stringr)
 library(data.table)
 
-setwd("~/data_Albas/Mice_Paper")
+#
+# Load data
+#
 
+setwd("~/000_GitHub/ibd-bcn_single_cell/GSE148794")
 counts <- as.data.frame(fread('GSE148794_tc_ibd.count_table.tsv', sep = '\t'))
 rownames(counts) <- counts$V1
 counts <- counts[,-grep("V1", colnames(counts))]
 counts <- as.matrix(counts)
 
+#
+# metadata 
+#
 metadata <- read.delim('GSE148794_tc_ibd.metadata.tsv', sep = '\t')
 ref <- gsub('\\.','_',paste0('R19', str_split_fixed(pattern = '.19', str = metadata$Sample_name, n = 2)[,2]))
 refok <- str_split_fixed(string = ref, pattern = '_S\\d', n = 2)[,1]
-
 timepoint <- gsub(pattern = 'tc_ibd.',replacement = '',
                   x = str_split_fixed(pattern = '.19', 
                                       str = metadata$Sample_name,
                                       n = 2)[,1])
-
 metadata$refok <- refok
 metadata$timepoint <- timepoint
-
-dat <- data.frame()
+metadataok <- metadataoka.frame()
 for(colname in colnames(counts)){
   ref <- substr(colname, 0,42)
-  nn <-grep(ref, metadata$refok)
-  dat <- rbind(dat, metadata[nn,])
-  rownames(dat)[nrow(dat)] <- colname
+  nn <-grep(ref, metametadataoka$refok)
+  metadataok <- rbind(metadataok, metametadataoka[nn,])
+  rownames(metadataok)[nrow(metadataok)] <- colname
 }
+saveRDS(metadataok, file = 'GSE148794_metadata_ok.RDS')
+metadataok <- readRDS('GSE148794_metadata_ok.RDS')
 
-saveRDS(dat, file = 'GSE148794_metadata_ok.RDS')
+#
+# create seurat object
+#
 
 
