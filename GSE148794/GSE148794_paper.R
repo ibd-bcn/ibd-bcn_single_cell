@@ -128,5 +128,19 @@ mice
 dir.create('together_noharmony')
 mice <- resolutions(mice, workingdir = 'together_noharmony/',
                     title = 'GSE148794_together_noharmony_')
+library(harmony)
+mice <- RunHarmony(mice, group.by = 'Sample_name', dims.use = 1:PCS2)
+ElbowPlot(mice, ndims = 100, reduction = 'harmony') +
+  geom_vline(xintercept = 50, linetype = 2) +
+  labs(title = paste0('Harmony - 41pcs'))
+mice<- FindNeighbors(mice, reduction = "harmony", dims = 1:50)
+mice<-RunUMAP(mice, dims=1:50, reduction= "harmony")
 
+DimPlot(mice, group.by = 'Sample_name') + labs(title = 'Mice - Harmony 41-50')
 
+dir.create('mice_harmony_41_50')
+mice <- resolutions(mice,
+                   workingdir = 'mice_harmony_41_50',
+                   title = 'mice_harmony_41_50')
+
+saveRDS(mice, file = 'mice_harmony_41_50/mice_harmony_41_50.RDS')
