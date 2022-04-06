@@ -26,7 +26,7 @@ source('~/data_Albas/functions_scrseq.R')
 #
 
 setwd("~/000_GitHub/ibd-bcn_single_cell/GSE148794")
-counts <- as.data.frame(fread('GSE148794_tc_ibd.count_table.tsv', sep = '\t'))
+counts <- as.data.frame(fread('RAW_DATA/GSE148794_tc_ibd.count_table.tsv', sep = '\t'))
 rownames(counts) <- counts$V1
 counts <- counts[,-grep("V1", colnames(counts))]
 counts <- as.matrix(counts)
@@ -34,7 +34,7 @@ counts <- as.matrix(counts)
 #
 # metadata 
 #
-metadata <- read.delim('GSE148794_tc_ibd.metadata.tsv', sep = '\t')
+metadata <- read.delim('RAW_DATA/GSE148794_tc_ibd.metadata.tsv', sep = '\t')
 ref <- gsub('\\.','_',paste0('R19', str_split_fixed(pattern = '.19', str = metadata$Sample_name, n = 2)[,2]))
 refok <- str_split_fixed(string = ref, pattern = '_S\\d', n = 2)[,1]
 timepoint <- gsub(pattern = 'tc_ibd.',replacement = '',
@@ -50,12 +50,14 @@ for(colname in colnames(counts)){
   metadataok <- rbind(metadataok, metametadataoka[nn,])
   rownames(metadataok)[nrow(metadataok)] <- colname
 }
-saveRDS(metadataok, file = 'GSE148794_metadata_ok.RDS')
-metadataok <- readRDS('GSE148794_metadata_ok.RDS')
+saveRDS(metadataok, file = 'RAW_DATA/GSE148794_metadata_ok.RDS')
+metadataok <- readRDS('RAW_DATA/GSE148794_metadata_ok.RDS')
 
 #
 # create seurat object
 #
+dir.create('00_annotation_process')
+setwd('00_annotation_process')
 
 mice <- CreateSeuratObject(
   counts, min.features = 100,
@@ -178,8 +180,8 @@ saveRDS(mice, file = 'together_noharmony/mice.RDS')
 ##
 ## epithelium ------------------------------------------------------------------
 ##
-dir.create('~/000_GitHub/ibd-bcn_single_cell/GSE148794/epithelium')
-setwd('~/000_GitHub/ibd-bcn_single_cell/GSE148794/epithelium')
+dir.create('~/000_GitHub/ibd-bcn_single_cell/GSE148794/00_annotation_process/epithelium')
+setwd('~/000_GitHub/ibd-bcn_single_cell/GSE148794/00_annotation_process/epithelium')
 
 epi <- mice[,mice$subset == 'epi'] # 1367 
 
@@ -241,8 +243,8 @@ saveRDS(epi, file = 'epi_harmony_36_41/epi_harmony_36_41.RDS')
 ##
 ## stroma ------------------------------------------------------------------
 ##
-dir.create('~/000_GitHub/ibd-bcn_single_cell/GSE148794/stroma')
-setwd('~/000_GitHub/ibd-bcn_single_cell/GSE148794/stroma')
+dir.create('~/000_GitHub/ibd-bcn_single_cell/GSE148794/00_annotation_process/stroma')
+setwd('~/000_GitHub/ibd-bcn_single_cell/GSE148794/00_annotation_process/stroma')
 
 stroma <- mice[,mice$subset == 'stroma'] #  3603
 
@@ -303,8 +305,8 @@ saveRDS(stroma, file = 'stroma_harmony_41_41/stroma_harmony_41_41.RDS')
 ##
 ## myeloids ------------------------------------------------------------------
 ##
-dir.create('~/000_GitHub/ibd-bcn_single_cell/GSE148794/myeloids')
-setwd('~/000_GitHub/ibd-bcn_single_cell/GSE148794/myeloids')
+dir.create('~/000_GitHub/ibd-bcn_single_cell/GSE148794/00_annotation_process/myeloids')
+setwd('~/000_GitHub/ibd-bcn_single_cell/GSE148794/00_annotation_process/myeloids')
 
 myeloids <- mice[,mice$subset == 'myeloid'] # 4585 
 
