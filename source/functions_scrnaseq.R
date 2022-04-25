@@ -53,9 +53,6 @@ resolutions <- function(object,
       theme(legend.position = 'right') + labs(title = title)
     print(p)
     dev.off()
-    
-
-    dev.off()
   }
   
   png(filename = paste0(title,'_clustree_resolutions.png'),
