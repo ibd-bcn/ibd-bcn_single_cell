@@ -18,14 +18,14 @@ cols <- c("#A6CEE3","#1F78B4",
           "maroon1", "lemonchiffon4", 
           "lemonchiffon")
            
-colors_subset <- readRDS('source/colors_subset.RDS')
-colors_health <- readRDS('source/colors_health.RDS')
-cols_epi <- readRDS('source/cols_epi.RDS')
-cols_myeloids <- readRDS('source/cols_myeloids.RDS')
-cols_plasmas <- readRDS('source/cols_plasmas.RDS')
-cols_stroma <- readRDS('source/cols_stroma.RDS')
-cols_tcells <- readRDS('source/cols_tcells.RDS')
-cols_myeloids_intermediate <- readRDS('source/cols_myeloids_intermediate.RDS')
+colors_subset <- readRDS('source/colors/colors_subset.RDS')
+colors_health <- readRDS('source/colors/colors_health.RDS')
+cols_epi <- readRDS('source/colors/cols_epi.RDS')
+cols_myeloids <- readRDS('source/colors/cols_myeloids.RDS')
+cols_plasmas <- readRDS('source/colors/cols_plasmas.RDS')
+cols_stroma <- readRDS('source/colors/cols_stroma.RDS')
+cols_tcells <- readRDS('source/colors/cols_tcells.RDS')
+cols_myeloids_intermediate <- readRDS('source/colors/cols_myeloids_intermediate.RDS')
 
 colors_health_alpha <- c('HC' =  '#71AD9680',
                          'CDa' = '#52517480',
