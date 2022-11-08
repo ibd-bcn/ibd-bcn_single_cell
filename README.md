@@ -13,10 +13,14 @@ We present a single cell dateset on IBD, including 12 patients (6 Chron's Diseas
 -   Comparison with publicly available data
 
 You can inspect our dataset easily, by using our ShinyApp [here](https://www.google.com/). 
-<hr/>
+
+-----
+
 # Abstract
 
-<hr/>
+-----
+
+
 # Code implementation
 
 `Analyisis of our data`: htmls with code and results of the analyisis of
