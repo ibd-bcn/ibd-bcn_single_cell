@@ -6,3 +6,10 @@ GSE121380
 GSE148794/mice_harmony_41_50
 GSE148794/.gitignore
 */*.jpeg
+*/*.rmd
+*/*/cache
+*/*/HC
+*/*/IBD
+*/*/ALL
+*/*/SUBSETS
+*/*/*.RDS
