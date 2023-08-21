@@ -1,6 +1,6 @@
 # Single cell RNAseq of inflammatory bowel disease patients
 
-Code repository for our paper. Please visit [our webpage](https://servidor2-ciberehd.upc.es/garrido.html) for further information.
+Code repository for our paper.
 
 ![](UMAP_tog_void.jpeg)
 
@@ -12,7 +12,7 @@ We present a single cell dateset on IBD, including 12 patients (6 Chron's Diseas
 
 -   Comparison with publicly available data
 
-You can inspect our dataset easily, by using our ShinyApp [here](https://servidor2-ciberehd.upc.es/external/garrido/app/). 
+You can inspect our dataset easily, by using our ShinyApp [here](https://servidor2-ciberehd.upc.es/external/garrido/app/).  Please visit [our webpage](https://servidor2-ciberehd.upc.es/garrido.html) for further information.
 
 # Abstract
 
